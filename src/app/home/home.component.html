@@ -1,0 +1,104 @@
+
+  <div class="info-container" *ngIf="CryptoData">
+    <div>
+        <h1 class="title-h1">CRYPTOCURRENCY PRICES PAGE</h1>
+        <h5 class="second-title">SEE ALL CRYPTOCURRENCIES PRICES IN ONE CLICK</h5>
+    </div>
+    <div class="box-crypto d-flex align-items-center justify-content-between">
+        <img class="tamaño-imagen" src="{{CryptoData.image.large}}" alt="imagen-crypto">
+        <div class="info-crypto">
+            <p class="name-crypto">{{CryptoData.name}}</p>
+            <p class="other-class-price">USD {{CryptoData.market_data.current_price.usd}}</p>
+        </div>
+        <div class="price-change">
+            <p *ngIf="CryptoData.market_data.price_change_percentage_24h>0; else notMoreCero" class="other-class-price">
+              %{{CryptoData.market_data.price_change_percentage_24h}}<i class="bi bi-caret-up"></i>
+            </p>
+            <ng-template #notMoreCero>
+              <p class="other-class-price-d">
+                %{{CryptoData.market_data.price_change_percentage_24h}}<i class="bi bi-caret-down"></i>
+              </p>
+            </ng-template>
+        </div>
+    </div>
+    
+
+  </div>
+
+
+
+  <!-- SECCION MARKET -->
+
+  <section id="precios">
+    <h3>Market Price</h3>
+
+    <article class="article-price">
+
+
+        <form (ngSubmit)="getCryptoSearch()" class="form-input-style">
+            <input class="input-style" [(ngModel)]="cryptoSearch" type="text" id="input-formulario" name="input-formulario" placeholder="Search to Crypto">
+
+          </form>
+          
+          <table class="table-cryptos">
+            <thead class="table-cryptos__header">
+              <tr>
+                <th>
+                  <h6>Name</h6>
+                </th>
+                <th>
+                  <h6>Price</h6>
+                </th>
+                <th>
+                  <h6>Change (24Hs)</h6>
+                </th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let crypto of CryptoDataAll | cryptoFilter:cryptoSearch" class="cryptos-container__card">
+                <td class="card__indentity">
+                  <img class="img-table" [src]="crypto.image" alt="">
+                  <p class="card-name">{{ crypto.name }}</p>
+                </td>
+                <td class="card-price">
+                  <p class="card-price">$ {{ crypto.current_price }} USD </p>
+                </td>
+                <td class="card__perc last-price__up">
+                  <p *ngIf="crypto.price_change_percentage_24h > 0; else notMoreCero" class="card-price">
+                    %{{ crypto.price_change_percentage_24h }}<i class="bi bi-caret-up"></i>
+                  </p>
+                  <ng-template #notMoreCero>
+                    <p class="card-price-d">%{{ crypto.price_change_percentage_24h }}<i class="bi bi-caret-down"></i></p>
+                  </ng-template>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <div class="number-count d-flex justify-content-center">
+            <p>{{pageNumber}} </p>
+          </div>
+            <div *ngIf="pageNumber === 1; else notPageOne" class="contenedor-botones">
+
+              <button type="button" class="botones-style" (click)="sumarValor()">Next Page</button>
+            </div>
+            <ng-template #notPageOne>
+              <div class="d-flex justify-content-between w-100 contendor-ambos-btn">
+                <button type="button" class="preview-stlye" (click)="restarValor()">Preview Page</button>
+                <button type="button" class="botones-style" (click)="sumarValor()">Next Page</button>
+              </div>
+            </ng-template>
+    </article>
+  </section>
+  <footer class="footer-stlye">
+ <div class="contendedor-icons">
+  <a href="https://github.com/Mattia-rc">
+    <i class="bi bi-github"></i>
+  </a>
+  <a href="https://mail.google.com/mail/u/0/#inbox">
+    <i class="bi bi-envelope-open-fill"></i>
+  </a>
+  <a href="https://www.linkedin.com/in/mattia-bagni181203/"> <i class="bi bi-linkedin"></i></a>
+ 
+
+ </div>
+  </footer>

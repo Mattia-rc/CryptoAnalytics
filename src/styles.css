@@ -1,1 +1,45 @@
 /* You can add global styles to this file, and also import other style files */
+
+
+@import url("https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.3/font/bootstrap-icons.min.css");
+
+
+:root{
+    --primary-color:#000c0d;
+    --color-letras:#43d993;
+    --width-img:80px;
+    --second-color:#40c0d1;
+    --background-color:#01181a;
+    --background-color-box:#001314;
+}
+*{
+    padding: 0;
+    margin: 0;
+
+}
+
+body{
+    background-color: var(--background-color) !important;
+}
+
+/* width */
+::-webkit-scrollbar {
+    width: 10px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px grey; 
+    border-radius: 10px;
+  }
+   
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background:var(--color-letras); 
+    border-radius: 10px;
+  }
+  
+  /* Handle on hover */
+  ::-webkit-scrollbar-thumb:hover {
+    background: #b30000; 
+  }

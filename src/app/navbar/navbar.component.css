@@ -1,0 +1,20 @@
+.navbar-inverse{
+    transition: 0.5s;
+    background-color: var(--background-color-box);
+    box-shadow: 0 0 30px rgba(1,75,87,.5);
+
+}
+
+.color-navbar-title{
+    color:var(--color-letras);
+}
+
+.nav-link{
+    color:var(--color-letras);
+}
+
+.color-navbar-title{
+    font-family: 'Montserrat', sans-serif;
+    font-weight: 700;
+    font-size: 28px;
+}
